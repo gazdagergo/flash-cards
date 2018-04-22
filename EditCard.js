@@ -33,7 +33,7 @@ export default class EditCard extends React.Component {
   componentDidMount() {
     this.props.navigation.setParams({ handleSave: this.saveDetails });
     const { params } = this.props.navigation.state;
-    if (!params || !params.id) {
+    if (!params) {
       this.setState({
         isLoading: false,
         operation: 'add',
@@ -53,13 +53,14 @@ export default class EditCard extends React.Component {
   saveDetails = () => {
     const { params } = this.props.navigation.state;
     const { goBack } = this.props.navigation;
-    const { question, answer } = this.state;
+    const { question, answer, id } = this.state;
 
     if (this.state.operation === 'edit') {
-
+      apiService.updateCard({ question, answer, id })
+      .then(goBack());
     } else {
       apiService.addNewCard({ question, answer })
-      .then(goBack())
+      .then(goBack());
     }
   }
 

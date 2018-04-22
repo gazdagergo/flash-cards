@@ -25,7 +25,11 @@ const apiService = {
   
   addNewCard: () => (
     new Promise(resolve => resove())
-  )
+  ),
+  
+  updateCard: () => (
+    new Promise(resolve => resove())
+  ),
 }
 
 export default apiService;
