@@ -5,7 +5,11 @@ import {
   View,
   ActivityIndicator,
 } from 'react-native';
-import Card from './Card';
+import {
+  Header,
+  Card
+} from 'react-native-elements';
+import FlashCard from './FlashCard';
 
 export default class ListOfCards extends React.Component {
   state = {
@@ -38,8 +42,9 @@ export default class ListOfCards extends React.Component {
 
     return (
       <View>
+        <Header />
         {this.state.cards.map(card => (
-          card && <Card key={ card.id } { ...card } />
+          card && <FlashCard key={ card.id } { ...card } />
         ))}
       </View>
     );
