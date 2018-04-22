@@ -7,7 +7,6 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {
-  Header,
   Card
 } from 'react-native-elements';
 import FlashCard from './FlashCard';
@@ -43,7 +42,6 @@ export default class ListOfCards extends React.Component {
 
     return (
       <View>
-        <Header />
         <FlatList
           data={this.state.cards}
           keyExtractor={item => item.id.toString()}
