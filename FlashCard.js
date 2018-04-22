@@ -12,6 +12,7 @@ export default FlashCard = ({ id, question, answer, navigation }) => (
       </View>
       <View style={{ minHeight: 50, width: 40 }}>
         <Icon
+          color="lightgray"
           name="edit"
           onPress={() => navigation.navigate('EditCard', {id}) }
         />
