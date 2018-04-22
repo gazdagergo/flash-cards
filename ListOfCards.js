@@ -10,6 +10,7 @@ import {
   Card
 } from 'react-native-elements';
 import FlashCard from './FlashCard';
+import apiService from './apiService';
 
 export default class ListOfCards extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -22,18 +23,13 @@ export default class ListOfCards extends React.Component {
   }
 
   componentDidMount() {
-    return fetch('https://gg-flash-cards.firebaseio.com/cards.json')
-      .then((response) => response.json())
-      .then((cards) => {
-
-        this.setState({
-          isLoading: false,
-          cards,
-        });
-      })
-      .catch((error) => {
-        throw error;
+    apiService.getCards()
+    .then(cards => {
+      this.setState({
+        isLoading: false,
+        cards,
       });
+    })
   }
 
   render() {

@@ -8,6 +8,7 @@ import {
   TextInput,
 } from 'react-native';
 import { Card } from 'react-native-elements';
+import apiService from './apiService';
 
 export default class EditCard extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -23,17 +24,14 @@ export default class EditCard extends React.Component {
 
   componentDidMount() {
     const { params } = this.props.navigation.state;
-    return fetch(`https://gg-flash-cards.firebaseio.com/cards/${params.id}.json`)
-      .then((response) => response.json())
-      .then((cardDetails) => {
-        this.setState({
-          isLoading: false,
-          ...cardDetails,
-        });
-      })
-      .catch((error) => {
-        throw error;
+
+    apiService.getCardDetails(params.id)
+    .then((cardDetails) => {
+      this.setState({
+        isLoading: false,
+        ...cardDetails,
       });
+    })
   }
 
   render() {
