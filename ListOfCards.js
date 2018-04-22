@@ -3,6 +3,7 @@ import {
   AppRegistry,
   Text,
   View,
+  FlatList,
   ActivityIndicator,
 } from 'react-native';
 import {
@@ -43,9 +44,13 @@ export default class ListOfCards extends React.Component {
     return (
       <View>
         <Header />
-        {this.state.cards.map(card => (
-          card && <FlashCard key={ card.id } { ...card } />
-        ))}
+        <FlatList
+          data={this.state.cards}
+          keyExtractor={item => item.id.toString()}
+          renderItem={card => {
+            return <FlashCard {...card.item} />
+          }}
+        />
       </View>
     );
   }
