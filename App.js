@@ -5,7 +5,7 @@ import EditCard from './EditCard';
 
 const MainNavigator =  StackNavigator({
   Home: { screen: ListOfCards },
-  Edit: { screen: EditCard },
+  EditCard: { screen: EditCard },
 });
 
 export default class App extends React.Component {

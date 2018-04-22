@@ -13,7 +13,7 @@ export default FlashCard = ({ id, question, answer, navigation }) => (
       <View style={{ minHeight: 50, width: 40 }}>
         <Icon
           name="edit"
-          onPress={() => navigation.navigate('Edit', {id}) }
+          onPress={() => navigation.navigate('EditCard', {id}) }
         />
       </View>
     </View>
@@ -21,6 +21,7 @@ export default FlashCard = ({ id, question, answer, navigation }) => (
 );
 
 FlashCard.propTypes = {
+  id: PropTypes.number,
   question: PropTypes.string,
   answer: PropTypes.string,
 };
