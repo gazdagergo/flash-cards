@@ -5,9 +5,10 @@ import {
   View,
   FlatList,
   ActivityIndicator,
+  Button,
 } from 'react-native';
 import {
-  Card
+  Card,
 } from 'react-native-elements';
 import FlashCard from './FlashCard';
 import apiService from './apiService';
@@ -15,6 +16,12 @@ import apiService from './apiService';
 export default class ListOfCards extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     title: 'Cards',
+    headerRight: (
+      <Button
+        title="New"
+        onPress={() => {navigation.navigate('EditCard')}}
+      />
+    )    
   });
   
   state = {

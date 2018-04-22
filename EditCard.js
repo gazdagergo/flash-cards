@@ -12,7 +12,7 @@ import apiService from './apiService';
 
 export default class EditCard extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    title: 'Edit card',
+    title: 'Edit card'
   });
 
   state = {
@@ -20,10 +20,18 @@ export default class EditCard extends React.Component {
     id: null,
     question: null,
     answer: null,
+    operation: 'edit',
   }
 
   componentDidMount() {
     const { params } = this.props.navigation.state;
+    if (!params || !params.id) {
+      this.setState({
+        isLoading: false,
+        operation: 'add',
+      });
+      return;
+    }
 
     apiService.getCardDetails(params.id)
     .then((cardDetails) => {
