@@ -47,7 +47,7 @@ export default class ListOfCards extends React.Component {
     }
 
     return (
-      <View>
+      <View style={{paddingBottom: 20}}>
         <FlatList
           data={this.state.cards}
           keyExtractor={item => item.id.toString()}
