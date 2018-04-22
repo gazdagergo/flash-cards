@@ -6,13 +6,20 @@ import {
   Text,
   ActivityIndicator,
   TextInput,
+  Button,
 } from 'react-native';
 import { Card } from 'react-native-elements';
 import apiService from './apiService';
 
 export default class EditCard extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    title: 'Edit card'
+    title: 'Edit card',
+    headerRight: (
+      <Button
+        title="Save"
+        onPress={() => {navigation.state.params.handleSave()}}
+      />
+    )    
   });
 
   state = {
@@ -24,6 +31,7 @@ export default class EditCard extends React.Component {
   }
 
   componentDidMount() {
+    this.props.navigation.setParams({ handleSave: this.saveDetails });
     const { params } = this.props.navigation.state;
     if (!params || !params.id) {
       this.setState({
@@ -40,6 +48,19 @@ export default class EditCard extends React.Component {
         ...cardDetails,
       });
     })
+  }
+
+  saveDetails = () => {
+    const { params } = this.props.navigation.state;
+    const { goBack } = this.props.navigation;
+    const { question, answer } = this.state;
+
+    if (this.state.operation === 'edit') {
+
+    } else {
+      apiService.addNewCard({ question, answer })
+      .then(goBack())
+    }
   }
 
   render() {

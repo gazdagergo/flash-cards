@@ -21,7 +21,11 @@ const apiService = {
         throw error;
       });      
     })
-  ), 
+  ),
+  
+  addNewCard: () => (
+    new Promise(resolve => resove())
+  )
 }
 
 export default apiService;
