@@ -3,7 +3,7 @@ import { AppRegistry, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { Card, Icon } from 'react-native-elements';
 
-export default FlashCard = ({ question, answer }) => (
+export default FlashCard = ({ id, question, answer, navigation }) => (
   <Card>
     <View style={{ flex: 1, flexDirection: 'row' }}>
       <View style={{ minHeight: 50, flex: 1 }}>
@@ -11,7 +11,10 @@ export default FlashCard = ({ question, answer }) => (
         <Text>{answer}</Text>
       </View>
       <View style={{ minHeight: 50, width: 40 }}>
-        <Icon name="edit" />
+        <Icon
+          name="edit"
+          onPress={() => navigation.navigate('Edit', {id}) }
+        />
       </View>
     </View>
   </Card>

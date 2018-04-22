@@ -1,18 +1,11 @@
 import React from 'react';
 import ListOfCards from './ListOfCards';
 import { StackNavigator } from 'react-navigation'
+import EditCard from './EditCard';
 
 const MainNavigator =  StackNavigator({
-  Home: {
-    screen: ListOfCards,
-    navigationOptions: {
-      title: "Flash Cards",
-      headerTintColor: "white",
-      headerStyle: {
-        backgroundColor: "purple"
-      }
-    }
-  }
+  Home: { screen: ListOfCards },
+  Edit: { screen: EditCard },
 });
 
 export default class App extends React.Component {
@@ -22,5 +15,4 @@ export default class App extends React.Component {
     );
   }
 }
-
 

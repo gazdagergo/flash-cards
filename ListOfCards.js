@@ -12,6 +12,10 @@ import {
 import FlashCard from './FlashCard';
 
 export default class ListOfCards extends React.Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: 'Cards',
+  });
+  
   state = {
     isLoading: true,
     cards: null,
@@ -46,7 +50,7 @@ export default class ListOfCards extends React.Component {
           data={this.state.cards}
           keyExtractor={item => item.id.toString()}
           renderItem={card => {
-            return <FlashCard {...card.item} />
+            return <FlashCard {...card.item} navigation={this.props.navigation} />
           }}
         />
       </View>
